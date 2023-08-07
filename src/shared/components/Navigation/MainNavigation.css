@@ -14,16 +14,16 @@
   display: block;
   width: 3rem;
   height: 2.5px;
-  background: white;
+  background: var(--bg-primary);
 }
 
 .main-navigation__title {
-  color: white;
+  color: var(--text-primary);
 }
 
 .main-navigation__title a {
   text-decoration: none;
-  color: white;
+  color: var(--text-primary);
 }
 
 .main-navigation__header-nav {
@@ -33,7 +33,15 @@
 .main-navigation__drawer-nav {
   height: 100%;
 }
-
+.nav {
+  display: flex;
+}
+.nav button {
+  background-color: var(--bg-navbar);
+  border: 0;
+  margin: 1rem;
+  padding: 0.5rem;
+}
 @media (min-width: 768px) {
   .main-navigation__menu-btn {
     display: none;

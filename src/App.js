@@ -11,6 +11,8 @@ import MainNavigation from "./shared/components/Navigation/MainNavigation";
 //import UpdatePlace from "./places/pages/UpdatePlace";
 //import Auth from "./user/pages/Auth";
 import { AuthContext } from "./shared/context/auth-context";
+import { ThemeProvider } from "./shared/context/theme-context";
+
 import { useAuth } from "./shared/hooks/auth-hook";
 import React, { Suspense } from "react";
 import LoadingSpinner from "./shared/components/UIElements/LoadingSpinner";
@@ -67,6 +69,7 @@ function App() {
         logout: logout,
       }}
     >
+      <ThemeProvider>
       <Router>
         <MainNavigation />
         <main>
@@ -81,6 +84,7 @@ function App() {
           </Suspense>
         </main>
       </Router>
+      </ThemeProvider>
     </AuthContext.Provider>
   );
 }

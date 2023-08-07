@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import MainHeader from "./MainHeader";
 import SideDrawer from "./SideDrawer";
 import "./MainNavigation.css";
 import NavLinks from "./NavLinks";
 import Backdrop from "../UIElements/Backdrop";
-
+import { ThemeContext } from "../../context/theme-context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 function MainNavigation(props) {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
   const openDrawerHandler = () => {
     setDrawerIsOpen(true);
@@ -34,9 +38,17 @@ function MainNavigation(props) {
         <h1 className="main-navigation__title">
           <Link to="/">YourPlaces</Link>
         </h1>
-        <nav className="main-navigation__header-nav">
-          <NavLinks />
-        </nav>
+        <div className="nav">
+          <button onClick={() => toggleTheme()}>
+            <FontAwesomeIcon
+              icon={theme === "light-theme" ? faSun : faMoon}
+              size="2x"
+            />
+          </button>
+          <nav className="main-navigation__header-nav">
+            <NavLinks />
+          </nav>
+        </div>
       </MainHeader>
     </>
   );
