@@ -42,17 +42,13 @@ const ImageUpload = (props) => {
       const { signature, timestamp } = await sendRequest(
         process.env.REACT_APP_BACKEND_URL + "/upload/cloudinary-sign"
       );
-      const { secure_url } = await sendRequest(
-        url,
-        "POST",
-        JSON.stringify({
-          file: pickedFile,
-          signature: signature,
-          timestamp: timestamp,
-          api_key: process.env.REACT_APP_CLOUDINARY_API_KEY,
-        }),
-        { "Content-Type": "application/json" }
-      );
+      const file = event.target.files[0];
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("signature", signature);
+      formData.append("timestamp", timestamp);
+      formData.append("api_key", process.env.REACT_APP_CLOUDINARY_API_KEY);
+      const { secure_url } = await sendRequest(url, "POST", formData);
       props.onInput(props.id, secure_url, fileIsValid);
     } catch (err) {
       throw new Error("something went wrong");
