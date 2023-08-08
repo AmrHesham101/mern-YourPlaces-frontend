@@ -42,12 +42,11 @@ const ImageUpload = (props) => {
       const { signature, timestamp } = await sendRequest(
         process.env.REACT_APP_BACKEND_URL + "/upload/cloudinary-sign"
       );
-      const file = event.target.files[0];
       const { secure_url } = await sendRequest(
         url,
         "POST",
         JSON.stringify({
-          file: file,
+          file: pickedFile,
           signature: signature,
           timestamp: timestamp,
           api_key: process.env.REACT_APP_CLOUDINARY_API_KEY,
