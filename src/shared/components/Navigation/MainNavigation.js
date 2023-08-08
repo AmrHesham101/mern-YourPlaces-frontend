@@ -27,18 +27,20 @@ function MainNavigation(props) {
         </nav>
       </SideDrawer>
       <MainHeader>
-        <button
-          className="main-navigation__menu-btn"
-          onClick={openDrawerHandler}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
-        <h1 className="main-navigation__title">
-          <Link to="/">YourPlaces</Link>
-        </h1>
-        <div className="nav">
+        <div className="header-left">
+          <button
+            className="main-navigation__menu-btn"
+            onClick={openDrawerHandler}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+          <h1 className="main-navigation__title">
+            <Link to="/">YourPlaces</Link>
+          </h1>
+        </div>
+        <div className="header-right nav">
           <button onClick={() => toggleTheme()}>
             <FontAwesomeIcon
               icon={theme === "light-theme" ? faSun : faMoon}
