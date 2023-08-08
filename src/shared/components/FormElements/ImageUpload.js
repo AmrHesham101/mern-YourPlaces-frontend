@@ -37,19 +37,16 @@ const ImageUpload = (props) => {
       setIsValid(false);
       fileIsValid = false;
     }
-    const url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/image/upload`;
+    const url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/upload`;
     try {
-      const { signature, timestamp } = await sendRequest(
-        process.env.REACT_APP_BACKEND_URL + "/upload/cloudinary-sign"
-      );
       const file = event.target.files[0];
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("upload_preset", process.env.REACT_APP_UPLOAD_NAME);
-      formData.append("signature", signature);
-      formData.append("timestamp", timestamp);
+      formData.append("upload_preset", process.env.REACT_APP_UPLOAD_NAME); // Replace with your actual upload preset name
       formData.append("api_key", process.env.REACT_APP_CLOUDINARY_API_KEY);
-      const { secure_url } = await sendRequest(url, "POST", formData);
+      const { secure_url } = await sendRequest(url, "POST", formData, {
+        "X-Requested-With": "XMLHttpRequest", // Set this header
+      });
       props.onInput(props.id, secure_url, fileIsValid);
     } catch (err) {
       throw new Error("something went wrong");
