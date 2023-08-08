@@ -37,7 +37,6 @@ const ImageUpload = (props) => {
       setIsValid(false);
       fileIsValid = false;
     }
-    console.log(process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
     const url = `https://api.cloudinary.com/v1_1/${process.env.REACT_APP_CLOUDINARY_CLOUD_NAME}/upload`;
     try {
       const { signature, timestamp } = await sendRequest(
