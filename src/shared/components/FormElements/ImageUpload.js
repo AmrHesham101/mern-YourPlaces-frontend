@@ -45,6 +45,7 @@ const ImageUpload = (props) => {
       const file = event.target.files[0];
       const formData = new FormData();
       formData.append("file", file);
+      formData.append("upload_preset", process.env.REACT_APP_UPLOAD_NAME);
       formData.append("signature", signature);
       formData.append("timestamp", timestamp);
       formData.append("api_key", process.env.REACT_APP_CLOUDINARY_API_KEY);
