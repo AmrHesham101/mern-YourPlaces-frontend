@@ -36,7 +36,7 @@ const Auth = () => {
     if (isLoginMode) {
       try {
         const responseData = await sendRequest(
-          process.env.REACT_APP_BACKEND_URL +"/users/login",
+          process.env.REACT_APP_BACKEND_URL + "/users/login",
           "POST",
           JSON.stringify({
             email: formState.inputs.email.value,
@@ -48,15 +48,16 @@ const Auth = () => {
       } catch (error) {}
     } else {
       try {
-        const formData = new FormData();
-        formData.append("email", formState.inputs.email.value);
-        formData.append("name", formState.inputs.name.value);
-        formData.append("password", formState.inputs.password.value);
-        formData.append("image", formState.inputs.image.value);
         const responseData = await sendRequest(
           process.env.REACT_APP_BACKEND_URL + "/users/signup",
           "POST",
-          formData
+          JSON.stringify({
+            name: formState.inputs.name.value,
+            email: formState.inputs.email.value,
+            password: formState.inputs.password.value,
+            imageUrl: formState.inputs.image.value,
+          }),
+          { "Content-Type": "application/json" }
         );
         auth.login(responseData.userId, responseData.token);
       } catch (error) {}
