@@ -22,20 +22,39 @@ Visit the [Live Demo](https://mern-your-places-frontend.vercel.app/)
     cd mern-YourPlaces-frontend
 3. Install dependencies:
     npm install
-4. Start the development server:
+4. Set up environment variables:
+    - Create a `.env` file in the root directory and add the following environment variables:
+       - REACT_APP_BACKEND_URL=http://localhost:5000/api
+       - REACT_APP_CLOUDINARY_CLOUD_NAME=CLOUDINARY_CLOUD_NAME
+       - REACT_APP_CLOUDINARY_API_KEY=CLOUDINARY_API_KEY
+       - REACT_APP_UPLOAD_NAME=CLOUDINARY_UPLOAD_NAM
+    - Replace the values accordingly.
+5. Start the development server:
     npm start
+
 
 ## Usage
 
-Once the development server is up and running, open your web browser and navigate to [http://localhost:3000](http://localhost:3000) to access the application.
+The frontend application provides a user-friendly interface for users to view and manage places. Users can create accounts, log in, add places, and interact with other users' places.
 
 ## Technologies Used
 
 - React.js for building the user interface
 - Redux for state management
-- Axios for handling API requests
+- Axios for making API requests
 - React Router for routing
-- CSS Modules for styling
+- cloudinary for storing images and returning URLs to store them in the backend
+
+## Features
+
+- User authentication and authorization
+- Add, edit, and delete places
+- View places on a map
+- Toggle between light and dark themes
+
+## Screenshots
+
+Screenshots of the application can be found in the Screenshots (SCREENSHOTS.md) file.
 
 ## Contributing
 
@@ -46,10 +65,4 @@ We welcome contributions from the community! To contribute, follow these steps:
 3. Make your changes and commit them
 4. Push your changes to your fork
 5. Submit a pull request
-
-
-## Contact
-
-For any inquiries or feedback, feel free to contact us at [your-email@example.com](mailto:your-email@example.com).
-
 
