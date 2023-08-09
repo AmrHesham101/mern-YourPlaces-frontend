@@ -38,10 +38,7 @@ Visit the [Live Demo](https://mern-your-places-frontend.vercel.app/)
 The frontend application provides a user-friendly interface for users to view and manage places. Users can create accounts, log in, add places, and interact with other users' places.
 
 ## Technologies Used
-
 - React.js for building the user interface
-- Redux for state management
-- Axios for making API requests
 - React Router for routing
 - cloudinary for storing images and returning URLs to store them in the backend
 
